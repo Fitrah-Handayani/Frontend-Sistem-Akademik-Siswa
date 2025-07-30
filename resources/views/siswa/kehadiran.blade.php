@@ -33,7 +33,7 @@
             <!-- Greeting -->
             <div class="bg-green-100 text-green-900 p-4 rounded-lg flex items-center gap-2 mb-6">
                 <i class="fas fa-bell"></i>
-                <span>Selamat datang, Fitrah Handayani. Pantau kehadiranmu setiap hari ya!</span>
+                <span>Selamat datang, Fitrah Handayani. Tetap semangat hadir setiap hari!</span>
             </div>
 
             <!-- Statistik Kehadiran -->
@@ -51,12 +51,12 @@
                     <h3 class="text-4xl font-bold">3</h3>
                 </div>
                 <div class="bg-red-500 text-white p-6 rounded-xl text-center">
-                    <p>Tanpa Keterangan</p>
+                    <p>Tidak Hadir</p>
                     <h3 class="text-4xl font-bold">2</h3>
                 </div>
             </div>
 
-            <!-- Tabel Kehadiran -->
+            <!-- Riwayat Kehadiran -->
             <div class="bg-white p-6 rounded-lg shadow">
                 <h3 class="font-semibold mb-4">Riwayat Kehadiran</h3>
                 <table class="w-full table-auto border-collapse">
@@ -69,30 +69,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="p-2 border">1</td>
-                            <td class="p-2 border">2025-07-25</td>
-                            <td class="p-2 border">Senin</td>
-                            <td class="p-2 border text-green-600 font-semibold">Hadir</td>
-                        </tr>
-                        <tr>
-                            <td class="p-2 border">2</td>
-                            <td class="p-2 border">2025-07-24</td>
-                            <td class="p-2 border">Jumat</td>
-                            <td class="p-2 border text-yellow-600 font-semibold">Izin</td>
-                        </tr>
-                        <tr>
-                            <td class="p-2 border">3</td>
-                            <td class="p-2 border">2025-07-23</td>
-                            <td class="p-2 border">Kamis</td>
-                            <td class="p-2 border text-purple-600 font-semibold">Sakit</td>
-                        </tr>
-                        <tr>
-                            <td class="p-2 border">4</td>
-                            <td class="p-2 border">2025-07-22</td>
-                            <td class="p-2 border">Rabu</td>
-                            <td class="p-2 border text-red-600 font-semibold">Tanpa Keterangan</td>
-                        </tr>
+                        <!-- Contoh Baris Data -->
+                        @php $no = 1; @endphp
+                        @foreach ($kehadiran as $data)
+                            <tr @if($data->status == 'Tidak Hadir') class="bg-red-100 text-red-700 font-semibold" @endif>
+                                <td class="p-2 border">{{ $no++ }}</td>
+                                <td class="p-2 border">{{ $data->tanggal }}</td>
+                                <td class="p-2 border">{{ \Carbon\Carbon::parse($data->tanggal)->translatedFormat('l') }}</td>
+                                <td class="p-2 border">{{ $data->status }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
