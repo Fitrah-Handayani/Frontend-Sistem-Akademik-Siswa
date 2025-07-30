@@ -22,7 +22,7 @@
             <h1 class="text-xl font-semibold">Siswa - Pengumuman</h1>
             <div class="flex items-center gap-2">
                 <img src="{{ asset('img/user.png') }}" alt="User" class="w-8 h-8 rounded-full" />
-                <span>Fitroh Hamdayani</span>
+                <span>Fitrah Handayani</span>
             </div>
         </header>
 
